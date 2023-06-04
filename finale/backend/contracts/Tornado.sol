@@ -62,8 +62,7 @@ contract Tornado is ReentrancyGuard {
         uint256[2] memory ins;
         
         for(uint8 i = 0; i < treeLevel; i++){
-            lastLevelHash[treeLevel] = currentHash;
-
+            
             if(currentIdx % 2 == 0){
                 left = currentHash;
                 right = levelDefaults[i];
@@ -75,6 +74,7 @@ contract Tornado is ReentrancyGuard {
                 hashPairings[i] = lastLevelHash[i];
                 hashDirections[i] = 1;
             }
+            lastLevelHash[i] = currentHash;
 
             ins[0] = left;
             ins[1] = right;
